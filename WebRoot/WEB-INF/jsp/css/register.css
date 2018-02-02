@@ -1,0 +1,167 @@
+body{
+font-family:Î¢ÈíÑÅºÚ;
+font-size:14px;
+background-image:url(../images/bj.jpg);
+background-size:100% 100%;
+background-attachment:scroll;
+margin-bottom:100px;
+padding-left:3px;
+padding-right:3px;
+}
+.fanhui{
+height:60px;
+width:90%;
+margin:auto;
+background-image:url(../images/fanhui.png);
+background-repeat:no-repeat;
+background-size:100% 60px;
+line-height:60px;
+text-align:center;
+color:#FFFFFF;
+text-shadow:1px 1px 1px rgba(0,0,0,.3);
+font-weight:800;
+font-size:18px;
+margin-top:10px;}
+.tishikuang{
+height:230px;
+padding-top:20px;
+width:90%;
+margin-left:5%;
+margin-top:20px;
+background-color:#0e3447;
+border-radius:10px;
+border:solid 3px #b3e6ff;
+background-size:100% 100%;}
+.tishikuang0_23{
+height:150px;
+padding-top:10px;
+width:90%;
+margin:auto;
+background-color:#17506d;
+border-radius:6px;
+margin-top:10px;
+}
+.gao{
+height:46px;
+}
+.tu_11{
+background-color:#b3e6ff;
+border:solid 1px #FFFFFF;
+border-radius:3px;
+height:40px;
+line-height:45px;
+padding-left:1%;
+font-size:13px;
+width:90%;
+margin:auto;
+text-align:left;
+}
+.tu_11 input{
+border:0px;
+border-radius:3px;
+background-color:#b3e6ff;
+width:80%;
+margin-left:1%;
+height:70%;
+margin-top:2%;
+color:#2684b2;
+}
+.tu_10{
+border-radius:3px;
+background-color:#b3e6ff;
+height:40px;
+line-height:45px;
+padding-left:1%;
+font-size:13px;
+width:40%;
+text-align:left;
+margin-left:4%;
+margin-right:1%;
+border:solid 1px #FFFFFF;
+}
+.tu_10 img{
+float:right;
+margin-right:2px;
+margin-top:8px;}
+.tu_10 input{
+border:0px;
+width:80%;
+height:70%;
+margin-top:2%;
+border-radius:3px;
+background-color:#b3e6ff;
+margin-left:1%;
+color:#2684b2;
+}
+.left{
+float:left;}
+.right{
+float:right;}
+.clear{
+clear:both;}
+.zhi0-11{
+height:40px;
+width:50%;
+line-height:45px;
+color:#FFFFFF;
+text-shadow:1px 1px 1px rgba(0,0,0,.3);
+font-weight:800;
+}
+.zhi0-12{
+height:45px;
+width:80%;
+margin:auto;
+line-height:45px;
+color:#FFFFFF;
+font-weight:800;
+}
+.shuliang8{
+height:40px;
+line-height:25px;
+width:30%;
+margin:10px auto;
+background-image:url(../images/tj.png);
+background-size:100% 100%;
+}
+.shuliang8_1{
+height:40px;
+line-height:40px;
+width:40%;
+color:#FFFFFF;
+text-align:center;
+margin:10px auto;
+background-image:url(../images/qqan.png);
+background-size:100% 100%;
+}
+#bg
+{ 	
+display: none;  
+position: absolute;  
+top: 0%;  
+left: 0%;  
+width: 100%;  
+height: 100%;  
+background-image:url(../images/bj.jpg);  
+z-index:1001;  
+}  
+#fx_neir
+{
+	display: none;  
+ position: absolute;  
+ top: 2%;  
+ left: 0%;  
+ background-image:url(../images/bj.jpg);  
+ z-index:1002;  
+ overflow: auto;
+ height:100%;
+}  
+#content{
+font-family:Î¢ÈíÑÅºÚ;
+font-size:14px;
+background-image:url(../images/bj.jpg);
+background-size:100% 100%;
+background-attachment:scroll;
+padding-left:3px;
+padding-right:3px;
+color:#fafafa;
+}

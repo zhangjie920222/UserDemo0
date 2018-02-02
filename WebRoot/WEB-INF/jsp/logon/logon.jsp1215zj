@@ -1,0 +1,168 @@
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page isELIgnored="false" %>
+<%@ include file="../../public/path.jsp"%>
+<!DOCTYPE>
+<html>
+  <head>
+    <title>${pageTitle}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/> 
+	<meta name="format-detection" content="telephone=no, email=no" />
+	<meta name="webview" content="webView.detectsPhoneNumbers=NO" />
+	<link rel="stylesheet" type="text/css" href="<%=skinPath%>css/logon.css"/>
+	<link rel=stylesheet type="text/css" href="<%=skinPath %>css/register.css" title="cool">
+	<script type="text/javascript" src="<%=basePath%>/js/jquery-1.6.min.js"></script>
+  </head>
+<body class="logonbackground" onload="loading()">
+<form id="frm" name="frm" method="post" action="<%=path%>/tocServlet">
+	<input type="hidden" name="reqName" value="logon">
+<div class="denglu" id="denglu">
+	<div class="denglu1">
+		<div class="shuliang01"><div class="dengluzi"></div></div>
+		<div class="shuliang01">
+			<div class="tu_111"><input name="password" id="pass" type="password" placeholder="交易密码" /></div>
+		</div>
+		<div class="shuliang01">
+			<input id="agree" name="agree" checked="checked" type="checkbox" />--我已阅读
+			<a href='#' id='riskTip' onclick='showRisk()'>《风险提醒》</a>
+		</div>
+		<div class="shuliang01" >
+				<a href="javascript:location.href='<%=basePath %>jsp/user/wangjimima.jsp'">忘记密码？</a>
+		</div>
+		<div class="shuliang02">
+			<div class="shuliang02-1 left" id="quxiao" >取消</div>
+			<div class="shuliang02-2 left" id="queding" >确定</div>
+		</div>
+	</div>
+</div>
+</form>
+<div class="fx_neir" id="fx_neir" style="display: none;">
+		<div class="content" id="content">
+				<p>
+				重要提示：请您务必在参与吉林农产品微盘前详细阅读本规则并充分理解下列文字内容：
+				</p>
+				<p> 吉林农产品微盘提供实盘资金和交易通道，客户根据本参与规则，通过入金或充值支付交易综合费用及承诺承担有限交易亏损赔付义务后，获得在限定时间内限定数量的商品交易权和利润分配权。
+				</p>
+				<p>
+				交易标的物
+				</p>
+				<p>
+				在吉林农产品微盘交易平台上进行交易的所有交易品种。
+				</p>
+				<p>
+				交易数量
+				</p>
+				<p>
+				具体细则参照吉林农产品微盘发布的相关交易规则及管理规定执行。
+				</p>
+				<p>
+				交易报价
+				</p>
+				<p>吉林农产品微盘综合国际市场商品价格和国内其他市场价格以及中国人民银行人民币兑美元基准汇率、市场供求关系等，连续报出交易中心商品现货的人民币价格。
+				</p>
+				<p>
+				交易时间、结算时间
+				</p>
+				<p>
+				具体细则参照吉林农产品微盘发布的相关交易规则及管理规定执行。
+				</p>
+				<p>
+				结算止盈
+				</p>
+				<p>当客户订货浮盈额达到保证金的一定比例时，系统将自动中止客户交易权并按止盈额进行结算。该比例可由客户自行设为10%、20%、30%、40%、50%，或不选择。
+				</p>
+				<p>
+				结算止损
+				</p>
+				<p>
+				当客户订货浮亏额达到保证金的一定比例时，系统将自动中止客户交易权并按止亏额进行结算。该比例可由客户自行设为10%、20%、30%、40%、50%，或不选择。
+				</p>
+				<p>
+				交易手续费
+				</p>
+				<p>
+				用于支付在委托买卖产品时应支付服务费用。具体细则参照吉林农产品微盘发布的相关交易规则及管理规定执行。
+				</p>
+				<p>
+				交易风险申明
+				</p>
+				<p>1）技术风险：由于交易是通过电子通讯技术来实现的，这些技术存在着被网络黑客和病毒攻击的可能，由此可能给客户带来损失，客户将不得不承担由此导致的损失。
+				</p>
+				<p>2）由于微盘并不能控制电讯信号的中断和连接以及互联网的畅通，也不能保证客户自身网络设备及电讯设备的稳定性，由此等原因而使客户遭受的损失，由客户自行承担，吉林农产品微盘不负有任何责任。
+				</p>
+				<p>3）不可抗力因素导致的风险：诸如地震、火灾、水灾、战争、暴动、罢工等不可抗力因素导致的交易中断、延误等风险，吉林农产品微盘不承担责任，但应在条件允许的范围内采取必要的补救措施以减少因不可抗力造成的损失
+				</p>
+				<p>4）其他风险：由于客户密码失密、操作不当、投资决策失误等原因可能会发生亏损，该损失将由客户自行承担；
+				</p>
+				<p>
+				本规则解释权归属吉林农产品交易中心，同时吉林农产品交易中心保留对参与规则进行必要变更和完善的权利。		
+				</p>		
+				<p style="text-align: right;">
+				 吉林农产品交易中心<br/>
+                             400-640-1599
+				</p>
+			<a id='closeRisk' href='#' onclick='hideRisk()'><div class="shuliang8_1 clear">确认</div></a>
+			</div>
+	</div>
+</body>
+<script type="text/javascript">
+function showRisk(){
+	$('#fx_neir').show();
+	};
+function hideRisk(){
+	$('#fx_neir').hide();
+	$('#agree')[0].checked = true;
+	};
+function loading(){
+	var msg = '${resultMsg}';
+	if(msg !=""){
+		alert(msg);
+	}
+	//var userIds = getCookie("userIds");
+	//if(userIds != null){
+	//	$("#userId").val(userIds);
+	//}
+}
+function getCookie(name)
+{
+    var bikky = document.cookie;
+    name += "=";
+   var i = 0;
+   while (i < bikky.length)
+   {
+        var offset = i + name.length;
+        if (bikky.substring(i, offset) == name)
+        {
+             var endstr = bikky.indexOf(";", offset);
+             if (endstr == -1) endstr = bikky.length;
+   
+         //alert(bikky.substring(offset, endstr));
+             return (bikky.substring(offset, endstr)); //返回的是string类型
+        }
+        i = bikky.indexOf(" ", i) + 1;
+        if (i == 0) break;
+   }
+    return null;
+}
+	$(function(){
+		var denglu = $("#denglu");
+		$("#quxiao").click(function(){
+			$("#pass").val("");
+		});
+		$("#queding").click(function(){
+			var pass = $("#pass").val();
+			if(pass == null || pass==""){
+				alert("请输入交易密码！");
+				return;
+			}
+			var agree = document.getElementById("agree").checked;
+			if(!agree){
+				alert("请先阅读风险提醒");
+				return;
+				}
+			$("#frm").submit();
+			
+		});
+	});
+</script>
+</html>

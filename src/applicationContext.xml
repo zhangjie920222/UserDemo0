@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	                    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd  
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd  
+                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd"
+                        default-autowire="byName" default-lazy-init="true">
+  
+    <!-- spring的属性加载器，加载properties文件中的属性 -->
+ <!--   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="propertyConfigurer">
+    <property name="locations">
+      <list> 
+       <value>classpath:db.properties</value> 
+     </list> 
+    </property> 
+    <property name="fileEncoding" value="GBK"/>
+   </bean> -->
+    <!-- 导入外部的properties文件 -->
+    <context:property-placeholder location="classpath:db.properties"/> 
+    <!-- 定义数据源的信息 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">			
+		<property name="driverClass">
+			<value>${jdbc.driverClass}</value> 
+		</property>
+		<property name="jdbcUrl">
+		<value>${jdbc.jdbcUrl}</value> 
+		</property>
+		<property name="user">
+			<value>${jdbc.username}</value> 
+		</property>
+		<property name="password">
+			 <value>${jdbc.password}</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>${pool.maxPoolSize}</value>
+		</property>
+		<property name="minPoolSize">
+			<value>${pool.minPoolSize}</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>${pool.initialPoolSize}</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>${pool.maxIdleTime}</value>
+		</property>
+	</bean>
+
+	<!--定义Hibernate的SessionFactory -->
+	<!-- SessionFactory使用的数据源为上面的数据源 -->
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<!-- 指定 Hibernate的映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>gnnt/demo/user/model/Depart.hbm.xml</value>
+				<value>gnnt/demo/user/model/User.hbm.xml</value>
+			</list>
+		</property>
+		<!-- 指定 Hibernate的配置信息 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>				
+			</props>
+		</property>
+	</bean>
+
+
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:advice id="txadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"  />
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception"  />
+			<tx:method name="modify*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"   />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception"   />
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+    <aop:config>
+		<aop:pointcut id="mypointcut" expression="execution(* gnnt.**.service..*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="mypointcut" />
+	</aop:config> 
+	<bean id="userDao" class="gnnt.demo.user.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />	
+	</bean>
+	<bean id="userService" class="gnnt.demo.user.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />	
+	</bean>
+	<bean id="userAction" class="gnnt.demo.user.action.UserAction">
+		<property name="userService" ref="userService" />
+	</bean>
+ 
+	</beans>

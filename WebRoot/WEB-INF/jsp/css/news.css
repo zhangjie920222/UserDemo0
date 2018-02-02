@@ -1,0 +1,72 @@
+body{
+font-family:Î¢ÈíÑÅºÚ;
+font-size:14px;
+background-image:url(../images/bj.jpg);
+background-size:100% 100%;
+background-attachment:scroll;
+margin-bottom:100px;
+padding-left:3px;
+padding-right:3px;
+}
+.fanhui{
+height:60px;
+width:90%;
+margin:auto;
+background-image:url(../images/fanhui.png);
+background-repeat:no-repeat;
+background-size:100% 60px;
+line-height:60px;
+text-align:center;
+color:#FFFFFF;
+text-shadow:1px 1px 1px rgba(0,0,0,.3);
+font-weight:800;
+font-size:18px;
+margin-top:10px;}
+.tishikuang01{
+height:510px;
+padding-top:20px;
+width:90%;
+margin-left:3%;
+margin-top:20px;
+background-color:#0e3447;
+border-radius:15px;
+border:solid 3px #b3e6ff;
+}
+.gonggao1{
+width:100%;
+height:180px;
+padding-top:10px;
+background-size:100% 100%;}
+.zgzd_1_1{
+height:30px;
+margin-top:5px;
+color:#CCCCCC;}
+.zgzd_1_1_left{
+height:30px;
+line-height:30px;
+padding-left:3%;
+width:64%;
+float:left;
+overflow:hidden;
+word-break:keep-all;
+white-space:nowrap;
+text-overflow:ellipsis;
+-o-text-overflow: ellipsis; 
+white-space: nowrap;}
+.zgzd_1_1_right{
+height:30px;
+line-height:30px;
+padding-right:3%;
+width:30%;
+text-align:right;
+color:#999999;
+float:right;}
+.bt1{     
+    width: 100%;
+    height: 50px;
+    margin: 20px 0;
+    background: url(../images/ico4.png) no-repeat #333 5px center;
+    font-weight: bold;
+    color: #acacac;
+    line-height: 50px;}
+.bt1 span{margin-left:40px;}
